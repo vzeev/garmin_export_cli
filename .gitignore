@@ -1,0 +1,17 @@
+.venv/
+__pycache__/
+*.py[cod]
+*.log
+*.tmp
+
+# Local Garmin credentials/tokens.
+tokens/
+.garminconnect/
+
+# Personal Garmin exports and generated summaries.
+exports/
+derived/
+
+# Local editor/system files.
+.DS_Store
+Thumbs.db
