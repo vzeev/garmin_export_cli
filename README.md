@@ -53,7 +53,7 @@ garmin-local-export-tools/
 Clone this repository:
 
 ```powershell
-git clone <your-public-repo-url> garmin-local-export-tools
+git clone https://github.com/vzeev/garmin_export_cli garmin-local-export-tools
 cd garmin-local-export-tools
 ```
 
