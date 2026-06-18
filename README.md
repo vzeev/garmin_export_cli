@@ -19,7 +19,9 @@ garmin-local-export-tools/
     garmin_backfill.py
     garmin_storage.py
     garmin_summarize.py
+    garmin_trainings.py
     garmin_weekly_update.py
+  examples/llm_agents/       # command examples for agent-driven workflows
   exports/                     # personal raw data, ignored
   derived/                     # generated summaries, ignored
 ```
@@ -34,6 +36,7 @@ garmin-local-export-tools/
 - Supports month-by-month historical backfill.
 - Supports current-month weekly refresh.
 - Generates compact training summaries under `derived/training/`.
+- Provides dry-run-first commands for creating and scheduling Garmin cycling training workouts.
 
 ## What This Is Not
 
@@ -164,6 +167,44 @@ derived/training/latest_training_context.md
 
 Treat the summarizer as an example and adapt it to the questions you want your agent to answer.
 
+## Create Garmin Training Workouts
+
+Build the harmless test workout JSON:
+
+```powershell
+poetry run garmin-rf build-test-workout
+```
+
+Dry-run upload and scheduling for one manually chosen date:
+
+```powershell
+poetry run garmin-rf push-workout --date 2026-06-18 --dry-run
+```
+
+Apply only after reviewing the dry-run payload:
+
+```powershell
+poetry run garmin-rf push-workout --date 2026-06-18 --apply
+```
+
+To push an agent-generated Garmin workout JSON file:
+
+```powershell
+poetry run garmin-rf push-workout --date 2026-06-18 --workout-json derived/ridefaster/rf_easy_10m.json --dry-run
+```
+
+Applied workout sync results are recorded in the ignored local state file:
+
+```text
+derived/ridefaster/workout_sync_state.json
+```
+
+More examples are in:
+
+```text
+examples/llm_agents/garmin_training_commands.md
+```
+
 ## Privacy Notes
 
 Garmin exports may include health, sleep, stress, activity, location, body, and performance data. Keep `exports/`, `derived/`, tokens, and logs out of public repositories unless you intentionally sanitize them.
@@ -178,6 +219,8 @@ poetry run garmin-export export --help
 poetry run backfill --help
 poetry run weekly --help
 poetry run summarize
+poetry run garmin-rf --help
+poetry run garmin-rf examples
 ```
 
 ## Boundary

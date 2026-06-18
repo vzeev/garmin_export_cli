@@ -33,3 +33,9 @@ def summarize() -> int:
     from garmin_summarize import main
 
     return main()
+
+
+def garmin_rf() -> int:
+    from garmin_trainings import main
+
+    return main()

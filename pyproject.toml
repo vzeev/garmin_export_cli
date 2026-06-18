@@ -14,6 +14,7 @@ garmin-export = "cli.entrypoints:garmin_export"
 backfill = "cli.entrypoints:backfill"
 weekly = "cli.entrypoints:weekly"
 summarize = "cli.entrypoints:summarize"
+garmin-rf = "cli.entrypoints:garmin_rf"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]

@@ -15,3 +15,12 @@ derived/
 # Local editor/system files.
 .DS_Store
 Thumbs.db
+
+.ai
+.ai/
+.codex
+.codex/
+.agents
+.agents/
+AGENTS.md
+.gitignore
